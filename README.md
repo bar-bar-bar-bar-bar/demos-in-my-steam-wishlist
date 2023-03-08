@@ -17,7 +17,9 @@ The tag also includes the platforms supported by the demo (i.e. Windows, Mac or 
 ## Privacy
 
 No login required.
+
 We don't access your personal data.
+
 We only use publicly available data provided by Steam itself.
 
 
