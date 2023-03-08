@@ -1,0 +1,87 @@
+img.kofiimg {
+    display: initial !important;
+    vertical-align: middle;
+    height: 13px !important;
+    width: 20px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    border: none;
+    margin-top: 0;
+    margin-right: 5px !important;
+    margin-left: 0 !important;
+    margin-bottom: 3px !important;
+    content: url('https://storage.ko-fi.com/cdn/cup-border.png')
+}
+
+.kofiimg:after {
+    vertical-align: middle;
+    height: 25px;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: none;
+    margin-top: 0;
+    margin-right: 6px;
+    margin-left: 0;
+    margin-bottom: 3px !important;
+    content: url('https://storage.ko-fi.com/cdn/whitelogo.svg')
+}
+
+.kofi-btn-container {
+    display: inline-block !important;
+    white-space: nowrap;
+    min-width: 160px
+}
+
+a:hover {
+    opacity: .85;
+    color: #f5f5f5 !important;
+}
+
+a:active {
+    color: #f5f5f5 !important;
+}
+
+.kofitext img.kofiimg {
+    height: 15px !important;
+    width: 22px !important;
+    display: initial;
+    animation: kofi-wiggle 3s infinite;
+}
+
+@keyframes kofi-wiggle {
+    0% {
+        transform: rotate(0) scale(1)
+    }
+
+    60% {
+        transform: rotate(0) scale(1)
+    }
+
+    75% {
+        transform: rotate(0) scale(1.12)
+    }
+
+    80% {
+        transform: rotate(0) scale(1.1)
+    }
+
+    84% {
+        transform: rotate(-10deg) scale(1.1)
+    }
+
+    88% {
+        transform: rotate(10deg) scale(1.1)
+    }
+
+    92% {
+        transform: rotate(-10deg) scale(1.1)
+    }
+
+    96% {
+        transform: rotate(10deg) scale(1.1)
+    }
+
+    100% {
+        transform: rotate(0) scale(1)
+    }
+}

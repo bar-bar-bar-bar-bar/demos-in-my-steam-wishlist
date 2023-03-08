@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "demos in my Steam wishlist",
+  "version": "1.0.1",
+  "description": "Check which games in your Steam wishlist have a demo.",
+  "icons": {
+    "16": "images/favicon-16x16.png",
+    "32": "images/favicon-32x32.png",
+    "48": "images/favicon-48x48.png",
+    "128": "images/favicon-128x128.png"
+  },
+  "content_scripts": [
+    {
+      "css": [
+        "src/dimsw-stylesheet.css"
+      ],
+      "js": [
+        "src/dimsw-content.js"
+      ],
+      "matches": [
+        "*://*.steampowered.com/wishlist/id/*",
+        "*://*.steampowered.com/wishlist/profiles/*"
+      ]
+    }
+  ],
+  "host_permissions": [
+    "https://store.steampowered.com/api/*"
+  ],
+  "action": {
+    "default_popup": "src/popup/dimsw-popup.html",
+    "default_icon": {
+      "16": "images/favicon-16x16.png",
+      "32": "images/favicon-32x32.png",
+      "48": "images/favicon-48x48.png",
+      "128": "images/favicon-128x128.png"
+    }
+  }
+}

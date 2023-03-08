@@ -1,0 +1,39 @@
+:root {
+    --dark-dimsw-blue: rgb(35, 65, 90);
+    --light-dimsw-blue: rgb(69,110,143)
+  }
+
+* {
+    color: #fff;
+    text-decoration: none !important;
+    font-family: 'Quicksand', Helvetica, Century Gothic, sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 14px !important
+}
+
+html {
+    background-color: var(--dark-dimsw-blue);
+    display: contents;
+}
+
+body {
+    margin-bottom: -2px;
+    padding-bottom: 4px;
+}
+
+a {
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+    line-height: 36px !important;
+    min-width: 150px;
+    display: inline-block !important;
+    background-color: var(--light-dimsw-blue);
+    padding: 2px 12px !important;
+    text-align: center !important;
+    border-radius: 7px;
+    cursor: pointer;
+    overflow-wrap: break-word;
+    vertical-align: middle;
+    margin-bottom: 5px;
+}
+
+

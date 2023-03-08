@@ -1,0 +1,41 @@
+.dimsw_demo_box {
+  width: max-content;
+  /* dimmer */
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 2px solid green ;
+  display: inline;
+  font-size: 16px;
+  color: white;
+  font-family: "Motiva Sans", Sans-serif;
+  font-weight: 400;
+  padding-inline-end: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-radius: 24px;
+  margin-left: 10px;
+}
+
+.dimsw_checkmark {
+  width: 32px;
+  height: 32px;
+  content: url('https://api.iconify.design/emojione-v1/left-check-mark.svg');
+  filter: invert(20%);
+  margin-right: -13px;
+  margin-left: 8px;
+}
+
+.dimsw_platform_icon {
+  width: 18px !important;
+  height: 18px !important;
+  filter: invert(20%);
+  margin-bottom: -2px;
+  margin-left: 2px;
+}
+
+.dimsw_demo_text {
+  color: #e0dede;
+}
+
+a.has_demo_box {
+  margin-top: -10px !important;
+}
