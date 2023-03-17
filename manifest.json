@@ -24,7 +24,8 @@
     }
   ],
   "host_permissions": [
-    "https://store.steampowered.com/api/*"
+    "https://store.steampowered.com/api/*",
+    "storage"
   ],
   "action": {
     "default_popup": "src/popup/dimsw-popup.html",

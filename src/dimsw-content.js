@@ -1,19 +1,4 @@
-async function getAppDetails(appId) {
-  const apiUrl = `https://store.steampowered.com/api/appdetails?appids=${appId}`;
-  return fetch(apiUrl)
-    .then((response) => response.json())
-    .then((resJson) => resJson[appId].data)
-    .catch((error) => console.error(error));
-}
 
-async function getDemoPlatforms(appId) {
-  // console.log(`async function getDemoPlatforms(${appId}) {`);
-  return getAppDetails(appId)
-    // assuming each app has only one demo app (couldn't find counter-examples)
-    .then((appDetails) => "demos" in appDetails ? appDetails.demos[0].appid : null)
-    .then((demoId) => demoId ? getAppDetails(demoId) : null)
-    .then((demoDetails) => demoDetails ? demoDetails.platforms : null);
-}
 
 function insertDemoBox(titleNode, demoPlatforms) {
   if (demoPlatforms == null) {
@@ -39,9 +24,11 @@ function insertDemoBox(titleNode, demoPlatforms) {
   titleNode.classList.add("has_demo_box");  // to compensate for displacement caused by demo box
 }
 
+var DEMO_INFO_URL = "https://raw.githubusercontent.com/bar-bar-bar-bar-bar/demos-in-my-steam-wishlist-data/main/app_id_to_demo_info.json"
 var g_hardcodedResponsiveNode = document.querySelector("div.responsive_page_content");
 var g_wishlistParentNode = null;
 var g_uncheckedItems = new Set();
+var g_appIdToDemoInfoMap = null;
 
 function loadUncheckedItems() {
   document.querySelectorAll('script').forEach((node) => {
@@ -88,8 +75,7 @@ async function checkLoadedTitleNode(titleNode) {
   g_uncheckedItems.delete(appId);
   // console.log(`${g_uncheckedItems.size} nodes remaining`);
 
-  var demoPlatformsAvailabilityMap = await getDemoPlatforms(appId); // {<platform>: bool}
-  if (demoPlatformsAvailabilityMap) {
+  if (g_appIdToDemoInfoMap[appId]["demo_platforms"]) {
     insertDemoBox(titleNode, demoPlatformsAvailabilityMap);
   }
 }
@@ -111,8 +97,25 @@ async function onWishlistItemsLoad(mutations, observer) {
   }
 }
 
+
+function getNewDemoInfo() {
+  
+  chrome.storage.local.set({appToDemoCache: g_appIdToDemoInfoMap, cacheTime: Date.now()}, function() {
+    callback(data);
+  });
+}
+
+async function getDemoPlatforms(appId) {
+  return 
+}
+
+function loadDemoInfo() {
+  g_appIdToDemoInfoMap = 
+}
+
 async function main() {
   loadUncheckedItems();
+  loadDemoInfo();
   const observer = new MutationObserver(checkResponsiveNodeChildren);
   observer.observe(g_hardcodedResponsiveNode, { childList: true, subtree: true });
 }
