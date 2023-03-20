@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "demos in my Steam wishlist",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Check which games in your Steam wishlist have a demo.",
   "icons": {
     "16": "images/favicon-16x16.png",
@@ -23,9 +23,11 @@
       ]
     }
   ],
-  "host_permissions": [
-    "https://store.steampowered.com/api/*",
+  "permissions": [
     "storage"
+  ],
+  "host_permissions": [
+    "https://store.steampowered.com/api/*"
   ],
   "action": {
     "default_popup": "src/popup/dimsw-popup.html",

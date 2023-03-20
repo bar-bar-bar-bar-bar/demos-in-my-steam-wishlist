@@ -1,7 +1,14 @@
 
+var WEEK_IN_MS = 604800000;
+var DEMO_INFO_URL = "https://raw.githubusercontent.com/bar-bar-bar-bar-bar/demos-in-my-steam-wishlist-data/main/app_id_to_demo_info.json"
+var g_hardcodedResponsiveNode = document.querySelector("div.responsive_page_content");
+var g_wishlistParentNode = null;
+var g_uncheckedItems = new Set();
+var g_appToDemoMap = null;
+
 
 function insertDemoBox(titleNode, demoPlatforms) {
-  if (demoPlatforms == null) {
+  if (!demoPlatforms) {
     return;
   }
   demoBoxHTML = `
@@ -23,12 +30,6 @@ function insertDemoBox(titleNode, demoPlatforms) {
   titleNode.insertAdjacentHTML("beforeend", demoBoxHTML);
   titleNode.classList.add("has_demo_box");  // to compensate for displacement caused by demo box
 }
-
-var DEMO_INFO_URL = "https://raw.githubusercontent.com/bar-bar-bar-bar-bar/demos-in-my-steam-wishlist-data/main/app_id_to_demo_info.json"
-var g_hardcodedResponsiveNode = document.querySelector("div.responsive_page_content");
-var g_wishlistParentNode = null;
-var g_uncheckedItems = new Set();
-var g_appIdToDemoInfoMap = null;
 
 function loadUncheckedItems() {
   document.querySelectorAll('script').forEach((node) => {
@@ -60,7 +61,7 @@ function checkResponsiveNodeChildren(mutations, observer) {
 
 
 async function checkLoadedTitleNode(titleNode) {
-  if (!titleNode ) { // when the filtered list is empty
+  if (!titleNode) { // when the filtered list is empty
     return;
   }
 
@@ -75,8 +76,8 @@ async function checkLoadedTitleNode(titleNode) {
   g_uncheckedItems.delete(appId);
   // console.log(`${g_uncheckedItems.size} nodes remaining`);
 
-  if (g_appIdToDemoInfoMap[appId]["demo_platforms"]) {
-    insertDemoBox(titleNode, demoPlatformsAvailabilityMap);
+  if (g_appToDemoMap[appId]) {
+    insertDemoBox(titleNode, g_appToDemoMap[appId].demo_platforms);
   }
 }
 
@@ -98,27 +99,40 @@ async function onWishlistItemsLoad(mutations, observer) {
 }
 
 
-function getNewDemoInfo() {
-  
-  chrome.storage.local.set({appToDemoCache: g_appIdToDemoInfoMap, cacheTime: Date.now()}, function() {
-    callback(data);
-  });
+async function getAppToDemoMap() {
+  return chrome.storage.local.get({ dimswCache: null })
+    .then((pre_validation_cache) => {
+      if (pre_validation_cache && pre_validation_cache.appToDemoMap && pre_validation_cache.timestamp) {
+        var weeksElapsed = (Date.now() - pre_validation_cache.timestamp) / WEEK_IN_MS;
+        if (weeksElapsed < 1) {
+          console.log("Using cached data...")
+          return pre_validation_cache;
+        }
+      } else {
+        return null;
+      }
+    })
+    .then(async (validated_cache) => {
+      if (validated_cache) {
+        return validated_cache.appToDemoMap;
+      }
+      console.log("Updating cache...")
+      var res = await fetch(DEMO_INFO_URL);
+      var freshMap = await res.json();
+      chrome.storage.local.set({ dimswCache: { appToDemoMap: freshMap, timestamp: Date.now() } });
+      return freshMap;
+    })
 }
 
-async function getDemoPlatforms(appId) {
-  return 
-}
-
-function loadDemoInfo() {
-  g_appIdToDemoInfoMap = 
-}
 
 async function main() {
+  g_appToDemoMap = await getAppToDemoMap();
   loadUncheckedItems();
-  loadDemoInfo();
   const observer = new MutationObserver(checkResponsiveNodeChildren);
   observer.observe(g_hardcodedResponsiveNode, { childList: true, subtree: true });
 }
 
 main();
+
+
 
