@@ -24,7 +24,9 @@
     }
   ],
   "permissions": [
-    "storage"
+    "storage",
+    "scripting",
+    "activeTab"
   ],
   "host_permissions": [
     "https://store.steampowered.com/api/*"
@@ -37,5 +39,8 @@
       "48": "images/favicon-48x48.png",
       "128": "images/favicon-128x128.png"
     }
+  },
+  "background": {
+    "service_worker": "src/background.js"
   }
 }

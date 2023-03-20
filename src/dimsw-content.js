@@ -102,25 +102,28 @@ async function onWishlistItemsLoad(mutations, observer) {
 async function getAppToDemoMap() {
   return chrome.storage.local.get({ dimswCache: null })
     .then((pre_validation_cache) => {
-      if (pre_validation_cache && pre_validation_cache.appToDemoMap && pre_validation_cache.timestamp) {
-        var weeksElapsed = (Date.now() - pre_validation_cache.timestamp) / WEEK_IN_MS;
+      if (pre_validation_cache.dimswCache &&
+          pre_validation_cache.dimswCache.appToDemoMap &&
+          pre_validation_cache.dimswCache.timestamp) {
+        var weeksElapsed = (Date.now() - pre_validation_cache.dimswCache.timestamp) / WEEK_IN_MS;
         if (weeksElapsed < 1) {
           console.log("Using cached data...")
-          return pre_validation_cache;
+          return pre_validation_cache.dimswCache;
         }
       } else {
         return null;
       }
     })
-    .then(async (validated_cache) => {
-      if (validated_cache) {
-        return validated_cache.appToDemoMap;
+    .then(async (cache_content) => {
+      if (cache_content) {
+        return cache_content.appToDemoMap;
       }
       console.log("Updating cache...")
       var res = await fetch(DEMO_INFO_URL);
-      var freshMap = await res.json();
-      chrome.storage.local.set({ dimswCache: { appToDemoMap: freshMap, timestamp: Date.now() } });
-      return freshMap;
+      var newCacheContent = { appToDemoMap: await res.json(), timestamp: Date.now() }
+      chrome.storage.local.set({ dimswCache: newCacheContent });
+
+      return newCacheContent.appToDemoMap;
     })
 }
 
@@ -132,35 +135,42 @@ async function getDynamicallyDefinedVar(varName) {
   var attempt = 0;
 
   while (window[varName] == undefined) {
-      console.log(`still undefined`);
-      await sleep(100);
-      ++attempt;
-      if (attempt == 10) {
-          console.error(`10 times and still undefined`);
-          return null;
-      }
+    console.log(`still undefined`);
+    await sleep(100);
+    ++attempt;
+    if (attempt == 10) {
+      console.error(`10 times and still undefined`);
+      return null;
+    }
   }
   return window[varName];
 }
 
 
 async function updategG_rgAppInfo() {
-  await getDynamicallyDefinedVar("g_rgAppInfo");
+  // await getDynamicallyDefinedVar("g_rgAppInfo");
+  console.log("global");
+  console.log(g_rgAppInfo);
   Object.keys(g_rgAppInfo).forEach((appId) => {
-    g_rgAppInfo[appId].has_demo = g_appToDemoMap.includes(appId) ?  true : false; 
+    g_rgAppInfo[appId].has_demo = g_appToDemoMap.includes(appId) ? true : false;
   })
 }
 
 
 async function main() {
   g_appToDemoMap = await getAppToDemoMap();
-  updategG_rgAppInfo();
+  // updategG_rgAppInfo();
   loadUncheckedItems();
   const observer = new MutationObserver(checkResponsiveNodeChildren);
   observer.observe(g_hardcodedResponsiveNode, { childList: true, subtree: true });
 }
 
+/* try sending message as in https://stackoverflow.com/questions/46869780/access-global-js-variables-from-js-injected-by-a-chrome-extension/46870005#46870005
+        > like this too https://stackoverflow.com/questions/9602022/chrome-extension-retrieving-global-variable-from-webpage
+better yet https://stackoverflow.com/questions/9515704/access-variables-and-functions-defined-in-page-context-using-a-content-script/9517879#9517879
+    > also try chrome.scripting.registerContentScripts with world: 'MAIN'
+
+*/
 main();
-console.log(g_rgPriceBrackets)
 
 
