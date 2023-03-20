@@ -124,15 +124,43 @@ async function getAppToDemoMap() {
     })
 }
 
+const sleep = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function getDynamicallyDefinedVar(varName) {
+  var attempt = 0;
+
+  while (window[varName] == undefined) {
+      console.log(`still undefined`);
+      await sleep(100);
+      ++attempt;
+      if (attempt == 10) {
+          console.error(`10 times and still undefined`);
+          return null;
+      }
+  }
+  return window[varName];
+}
+
+
+async function updategG_rgAppInfo() {
+  await getDynamicallyDefinedVar("g_rgAppInfo");
+  Object.keys(g_rgAppInfo).forEach((appId) => {
+    g_rgAppInfo[appId].has_demo = g_appToDemoMap.includes(appId) ?  true : false; 
+  })
+}
+
 
 async function main() {
   g_appToDemoMap = await getAppToDemoMap();
+  updategG_rgAppInfo();
   loadUncheckedItems();
   const observer = new MutationObserver(checkResponsiveNodeChildren);
   observer.observe(g_hardcodedResponsiveNode, { childList: true, subtree: true });
 }
 
 main();
-
+console.log(g_rgPriceBrackets)
 
 
