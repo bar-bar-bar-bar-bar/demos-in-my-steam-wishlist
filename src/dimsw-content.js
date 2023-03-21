@@ -1,7 +1,6 @@
 
 var WEEK_IN_MS = 604800000;
 var DEMO_INFO_URL = "https://raw.githubusercontent.com/bar-bar-bar-bar-bar/demos-in-my-steam-wishlist-data/main/app_id_to_demo_info.json"
-var g_hardcodedResponsiveNode = null;
 var g_wishlistParentNode = null;
 var g_uncheckedItems = new Set();
 var g_appToDemoMap = null;
@@ -132,8 +131,8 @@ async function main() {
 	addMainWorldScript();
 	loadUncheckedItems();
 	const observer = new MutationObserver(checkResponsiveNodeChildren);
-	g_hardcodedResponsiveNode = document.querySelector("div.responsive_page_content");
-	observer.observe(g_hardcodedResponsiveNode, { childList: true, subtree: true });
+	var responsiveNode = document.querySelector("div.responsive_page_content");
+	observer.observe(responsiveNode, { childList: true, subtree: true });
 }
 
 main();
