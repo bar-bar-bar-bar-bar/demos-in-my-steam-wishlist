@@ -40,7 +40,14 @@
       "128": "images/favicon-128x128.png"
     }
   },
-  "background": {
-    "service_worker": "src/background.js"
-  }
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/dimsw-main-world.js"
+      ],
+      "matches": [
+        "https://store.steampowered.com/*"
+      ]
+    }
+  ]
 }
