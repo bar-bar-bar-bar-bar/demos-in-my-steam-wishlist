@@ -161,9 +161,9 @@ g_Wishlist.BPassesFilters = function (unAppId, rgFilters) {
     if (rgFilters.windows_demo || rgFilters.mac_demo || rgFilters.linux_demo) {
         if (!appInfo.demoPlatforms)
             return false;
-        if (!(rgFilters.windows_demo && appInfo.demoPlatforms["windows"]) &&
-            !(rgFilters.mac_demo  && appInfo.demoPlatforms["mac"])  &&
-            !(rgFilters.linux_demo  && appInfo.demoPlatforms["linux"]))
+        if (!((rgFilters.windows_demo && appInfo.demoPlatforms["windows"]) ||
+            (rgFilters.mac_demo && appInfo.demoPlatforms["mac"]) ||
+            (rgFilters.linux_demo && appInfo.demoPlatforms["linux"])))
             return false;
     }
 
