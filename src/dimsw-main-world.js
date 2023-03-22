@@ -6,7 +6,6 @@ async function getDynamicallyDefinedArray(varName) {
     var attempt = 0;
 
     while (window[varName].length == 0) {
-        console.log(`still undefined`);
         await sleep(100);
         ++attempt;
         if (attempt == 20) {
@@ -176,7 +175,6 @@ g_Wishlist.BPassesFilters = function (unAppId, rgFilters) {
 
 
 async function main() {
-    console.log("global");
     await getDynamicallyDefinedArray("g_rgAppInfo");
     updategG_rgAppInfo();
     addFilterCheckboxes();
