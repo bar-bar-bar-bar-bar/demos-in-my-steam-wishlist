@@ -8,25 +8,38 @@ Browser extension that allows you to check which games in your Steam wishlist ha
 
 
 ## What it does
-'demos in my Steam wishlist' is activated every time you access a wishlist page at https://store.steampowered.com. It adds a tag next to the games that have a demo available.
+NEW FEATURE: WISHLIST FILTERS!
 
-The tag also includes the platforms supported by the demo (i.e. Windows, Mac or Linux / Steam Deck) - which not always are the same as the full game.
+- Adds a filter option to only display games with demos.
+- Adds a tag next to each item that has a demo available.
+- Both the filter and the tagging systems distinguish demos by platform (i.e. Windows, Mac, or Linux/Steam Deck), which not always are the same platforms supported by the full game.
+
+
+
+'demos in my Steam wishlist' is activated every time you access a wishlist page at https://store.steampowered.com. 
+
+
+
 
 ![](https://i.imgur.com/R31JF4R.jpg)
+![](https://i.imgur.com/Iiw9whh.jpeg)
 
 ## Privacy
 
-No login required.
+No login is required.
 
 We don't access your personal data.
 
 We only use publicly available data provided by Steam itself.
 
+## Notice
 
-## Upcoming features:
+If the filter misbehaves in any way (e.g. the filter options are not rendered), open your wishlist in a new tab (instead of simply refreshing the page), and everything should be fine again. 
 
-* Wishlist filter for games with demos.
+We are working on a solution for this.
+
 
 ---
 
-<a href='https://ko-fi.com/demosinmysteamwishlist' target='_blank'><img height='35' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Donate' />
+Donations: https://ko-fi.com/demosinmysteamwishlist
+
