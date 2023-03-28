@@ -23,11 +23,6 @@
       ]
     }
   ],
-  "permissions": [
-    "storage",
-    "scripting",
-    "activeTab"
-  ],
   "host_permissions": [
     "https://store.steampowered.com/api/*"
   ],

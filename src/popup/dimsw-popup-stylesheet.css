@@ -27,22 +27,32 @@ a {
     vertical-align: middle !important;
 }
 
-.dimsw-btn {
-    box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
-    line-height: 36px !important;
-    min-width: 150px !important;
+.wishlist-btn {
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    min-width: 200px !important;
     display: inline-block !important;
     background-color: var(--light-dimsw-blue);
-    padding: 2px 12px !important;
-    text-align: center !important;
-    border-radius: 7px;
-    overflow-wrap: break-word;
-    margin-bottom: 5px;
+    padding: 10px 5px 10px 0px !important;
+    margin-bottom: 6px;
 }
-
-.github-btn {
+.wishlist-text {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.blue-btn {
     color: var(--light-dimsw-blue);
     display: block !important;
+}
+
+.steam-logo {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 10px;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.6));
+    width: 20px;
+    line-height: 30px;
+    vertical-align: middle;
 }
 
 

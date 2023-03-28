@@ -1,5 +1,5 @@
 
-var WEEK_IN_MS = 604800000;
+var DAY_IN_MS = 86400000;
 var DEMO_INFO_URL = "https://raw.githubusercontent.com/bar-bar-bar-bar-bar/demos-in-my-steam-wishlist-data/main/app_id_to_demo_info.json"
 var g_wishlistParentNode = null;
 var g_uncheckedItems = new Set();
@@ -102,18 +102,17 @@ async function getAppToDemoMap() {
 	var stringifiedCache = localStorage.getItem("dimswCache");
 	var cacheContent = JSON.parse(stringifiedCache);
 	if (cacheContent?.appToDemoMap && cacheContent?.timestamp) {
-		var weeksElapsed = (Date.now() - cacheContent.timestamp) / WEEK_IN_MS;
-		if (weeksElapsed < 1) {
+		var daysElapsed = (Date.now() - cacheContent.timestamp) / DAY_IN_MS;
+		if (daysElapsed < 1) {
 			console.log("Using cached data...")
 			return cacheContent.appToDemoMap;
 		}
-	} else {
-		console.log("Updating cache...")
-		var res = await fetch(DEMO_INFO_URL);
-		var newCacheContent = { appToDemoMap: await res.json(), timestamp: Date.now() }
-		localStorage.setItem("dimswCache", JSON.stringify(newCacheContent));
-		return newCacheContent.appToDemoMap;
 	}
+	console.log("Updating cache...")
+	var res = await fetch(DEMO_INFO_URL);
+	var newCacheContent = { appToDemoMap: await res.json(), timestamp: Date.now() }
+	localStorage.setItem("dimswCache", JSON.stringify(newCacheContent));
+	return newCacheContent.appToDemoMap;
 }
 
 

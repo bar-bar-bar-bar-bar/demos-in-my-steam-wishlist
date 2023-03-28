@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Krita: https://krita.org -->
+<svg xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:krita="http://krita.org/namespaces/svg/krita"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    width="64.08pt"
+    height="64.8pt"
+    viewBox="0 0 64.08 64.8">
+<defs/>
+<path id="shape0" transform="matrix(0.72 0 0 0.72 0.244440000000003 0.549720000000004)" fill="#ffffff" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel" d="M44.084 0C20.846 0 1.809 17.918 0 40.689L23.71 50.492C25.719 49.118 28.146 48.313 30.757 48.313C30.991 48.313 31.224 48.321 31.455 48.334L41.999 33.051C41.999 32.978 41.998 32.907 41.998 32.835C41.998 23.636 49.481 16.152 58.681 16.152C67.88 16.152 75.363 23.636 75.363 32.835C75.363 42.034 67.88 49.519 58.681 49.519C58.554 49.519 58.428 49.516 58.302 49.513L43.264 60.243C43.272 60.438 43.279 60.637 43.279 60.835C43.279 67.741 37.662 73.357 30.757 73.357C24.696 73.357 19.628 69.031 18.48 63.302L1.524 56.292C6.774 74.86 23.833 88.473 44.084 88.473C68.516 88.473 88.321 68.667 88.321 44.238C88.321 19.805 68.515 0 44.084 0" sodipodi:nodetypes="ccccccccccccccccccc"/><path id="shape1" transform="matrix(0.72 0 0 0.72 16.29108 37.5692333030652)" fill="#ffffff" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel" d="M5.434 15.706L0 13.461C0.963 15.466 2.629 17.145 4.841 18.067C9.623 20.059 15.136 17.79 17.129 13.004C18.094 10.69 18.1 8.13501 17.143 5.81501C16.188 3.49401 14.386 1.68401 12.069 0.718009C9.77 -0.238991 7.307 -0.203991 5.143 0.613009L10.756 2.93401C14.283 4.40401 15.951 8.45401 14.481 11.981C13.014 15.509 8.961 17.177 5.434 15.706" sodipodi:nodetypes="cccccccccc"/><path id="shape2" transform="matrix(0.72 0 0 0.72 34.49052 16.1874)" fill="#ffffff" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel" d="M22.232 11.116C22.232 4.987 17.246 0 11.116 0C4.987 0 0 4.987 0 11.116C0 17.246 4.987 22.231 11.116 22.231C17.246 22.23 22.232 17.245 22.232 11.116M2.784 11.097C2.784 6.485 6.523 2.747 11.135 2.747C15.747 2.747 19.486 6.485 19.486 11.097C19.486 15.709 15.747 19.447 11.135 19.447C6.523 19.447 2.784 15.708 2.784 11.097" sodipodi:nodetypes="cccccccccc"/>
+</svg>
