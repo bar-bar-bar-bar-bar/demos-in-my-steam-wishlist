@@ -3,8 +3,6 @@ Browser extension that allows you to check which games in your Steam wishlist ha
 
 
 [![Chrome extension](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png)](https://chrome.google.com/webstore/detail/demos-in-my-steam-wishlis/cfdhaglgnhlacodkjjmlbcglgecnelnj)
-[![Firefox extension](https://extensionworkshop.com/assets/img/documentation/publish/get-the-addon-178x60px.dad84b42.png)](https://addons.mozilla.org/de/firefox/addon/demos-in-my-steam-wishlist/)
-
 
 
 ## What it does
