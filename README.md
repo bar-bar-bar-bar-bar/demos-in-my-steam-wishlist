@@ -3,12 +3,11 @@ Browser extension that allows you to check which games in your Steam wishlist ha
 
 
 [![Chrome extension](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png)](https://chrome.google.com/webstore/detail/demos-in-my-steam-wishlis/cfdhaglgnhlacodkjjmlbcglgecnelnj)
-[![Firefox extension](https://extensionworkshop.com/assets/img/documentation/publish/get-the-addon-178x60px.dad84b42.png)](https://addons.mozilla.org/de/firefox/addon/demos-in-my-steam-wishlist/)
+
 
 
 
 ## What it does
-NEW FEATURE: WISHLIST FILTERS!
 
 - Adds a filter option to only display games with demos.
 - Adds a tag next to each item that has a demo available.
@@ -36,7 +35,6 @@ We only use publicly available data provided by Steam itself.
 
 If the filter misbehaves in any way (e.g. the filter options are not rendered), open your wishlist in a new tab (instead of simply refreshing the page), and everything should be fine again. 
 
-We are working on a solution for this.
 
 
 ---
